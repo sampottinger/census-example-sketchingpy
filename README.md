@@ -5,7 +5,13 @@ Example for [UC Berkeley Stat 198: Interactive Data Science and Visualization](h
 This [Sketchingpy](https://sketchingpy.org)-based visualization shows unemployment, median income, and participation metrics segmented by gender and race / ethnicity. It is offered as an example to the class if desired.
 
 ## Usage
-Simply install the requirements for the project with `pip install -r requirements.txt` or similar. Then, execute `python assignment_9.py` or `python assignment_10.py`. This can also run in the Sketchingpy online editor.
+There are two ways to run this script.
+
+### Local usage.
+Simply install the requirements for the project with `pip install -r requirements.txt` or similar. Then, execute `python assignment_9.py` or `python assignment_10.py`. This can also run in the Sketchingpy online editor. Be sure that `IS_ONLINE` is set to `False`.
+
+### Online editor
+This can run in the [Sketchingpy online sketchbook](https://editor.sketchingpy.org). Just set `IS_ONLINE` to `True`.
 
 ## Deployment
 Deployment is automated through GitHub Actions. Simply push to main.

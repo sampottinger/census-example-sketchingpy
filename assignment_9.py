@@ -441,11 +441,17 @@ class UnemploymentByGenderPresenter:
         self._sketch.pop_transform()
 
 
-sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)
+if IS_ONLINE:
+    sketch = sketchingpy.Sketch2D(WIDTH, HEIGHT)
+else:
+    sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)
 
 dataset = data_model.load_from_file(DATA_LOC, sketch=sketch)
 
 main_presenter = MainPresenter(sketch, dataset)
 main_presenter.draw()
 
-sketch.save_image('assignment_9.png')
+if IS_ONLINE:
+    sketch.show()
+else:
+    sketch.save_image('assignment_9.png')
