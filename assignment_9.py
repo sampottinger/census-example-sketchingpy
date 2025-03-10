@@ -74,7 +74,7 @@ class OccupationScale:
         """
         index = self._occupations.index(occupation)
         index_offset = index + 0.5
-        percent = index / len(self._occupations)
+        percent = index_offset / len(self._occupations)
         return self._height * percent
 
 
@@ -370,7 +370,8 @@ class UnemploymentByGenderPresenter:
         self._sketch.set_text_align('center', 'top')
         self._sketch.set_text_font(FONT, 12)
 
-        percents = range(0, MAX_UNEMPLOYMENT + 1)
+        max_unemployment = self._horiz_scale.get_max_unemployment()
+        percents = range(0, max_unemployment + 1)
         for percent in percents:
             x = self._horiz_scale.get_position(percent)
             self._sketch.draw_text(x, 0, '%d%%' % percent)
