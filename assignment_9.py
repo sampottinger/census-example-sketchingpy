@@ -42,7 +42,9 @@ OVERLAY_COLOR = '#FFFFFF'
 OCCUPATION_AXIS_COLOR = '#E0E0E0'
 GAP_COLOR = '#505050'
 
-FONT = 'PublicSans-Regular'
+IS_ONLINE = False
+
+FONT = 'PublicSans-Regular' if IS_ONLINE else 'PublicSans-Regular.otf'
 
 TITLE = 'An Economy that Leaves Some Out'
 PARTICIPATION_TITLE = '% of Workers in Occupation'
