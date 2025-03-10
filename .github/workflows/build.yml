@@ -46,3 +46,11 @@ jobs:
           name: assignment_9
           path: assignment_9.png
           if-no-files-found: error
+      - name: Execute assignment 10
+        run: python3 assignment_10.py
+      - name: Upload assignment 10
+        uses: actions/upload-artifact@v4
+        with:
+          name: assignment_10
+          path: assignment_10.png
+          if-no-files-found: error
