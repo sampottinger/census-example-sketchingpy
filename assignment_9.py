@@ -185,7 +185,7 @@ class MainPresenter:
 
 
 class ParticipationRateByGenderPresenter:
-    """Presenter for the right-side graphic which shows participation.
+    """Presenter for the left-side graphic which shows participation.
 
     Presenter which displays a right side graphic which both identifies
     individual occupations and draws the gender participation rate
@@ -196,7 +196,9 @@ class ParticipationRateByGenderPresenter:
         """Create a new participation rate visualization.
         
         Args:
-            
+            sketch: The sketch to use to draw this subgraphic.
+            dataset: The data_model.Dataset to draw in this subgraphic.
+            vert_scale: The shared axis / scale for occupation.
         """
         self._sketch = sketch
         self._dataset = dataset
@@ -204,6 +206,7 @@ class ParticipationRateByGenderPresenter:
         self._width = END_X_GENDER_PARTICIPATION - START_X_GENDER_PARTICIPATION
 
     def draw(self):
+        """Draw this subgraphic."""
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -214,6 +217,11 @@ class ParticipationRateByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_axis(self):
+        """Draw the axis for this subgraphic.
+
+        Draw the axis indicating which side corresponds to which gender for the
+        participating by gender and occuation left-side graphic.
+        """
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -241,6 +249,7 @@ class ParticipationRateByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_body(self):
+        """Draw the actual occuaptions and their participation rates."""
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -257,6 +266,12 @@ class ParticipationRateByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_occupation(self, occupation):
+        """Draw an individual occupation and its participation rate.
+
+        Args:
+            occupation: The occupation to draw. This name should match the value
+                found in docc03.
+        """
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -310,8 +325,22 @@ class ParticipationRateByGenderPresenter:
 
 
 class UnemploymentByGenderPresenter:
+    """Draw the central unemployment by gender dot plot.
+
+    Graphic which is central to the full visualization that shows dot plots
+    which depict unemployment with two dots in different colors representing the
+    census genders. This contains the horizontal axis but not the vertical which
+    comes from the left-side subgraphic.
+    """
 
     def __init__(self, sketch, dataset, horiz_scale, vert_scale):
+        """Create a new unemployment gender dot plot.
+
+        Args:
+            sketch: The sketchingpy.Sketch2D in which to draw this central
+                graphic.
+            dataset: The data_model.Dataset to draw in this central figure.
+        """
         self._sketch = sketch
         self._dataset = dataset
         self._horiz_scale = horiz_scale
@@ -319,6 +348,7 @@ class UnemploymentByGenderPresenter:
         self._width = END_X_UNEMPLOYMENT - START_X_UNEMPLOYMENT
 
     def draw(self):
+        """Draw this subgraphic."""
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -329,6 +359,7 @@ class UnemploymentByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_axis(self):
+        """Draw the unemployment horizontal axis."""
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -350,6 +381,7 @@ class UnemploymentByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_body(self):
+        """Draw the central body of this graphic."""
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -363,6 +395,11 @@ class UnemploymentByGenderPresenter:
         self._sketch.pop_transform()
 
     def _draw_occupation(self, occupation):
+        """Draw an individual occupation in this graphic.
+
+        Args:
+            occupation: The name of the occupation to draw as appears in docc03.
+        """
         self._sketch.push_transform()
         self._sketch.push_style()
 
@@ -401,10 +438,11 @@ class UnemploymentByGenderPresenter:
         self._sketch.pop_transform()
 
 
-sketch = sketchingpy.Sketch2D(WIDTH, HEIGHT)
-sketch.show()
+sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)
 
 dataset = data_model.load_from_file(DATA_LOC, sketch=sketch)
 
 main_presenter = MainPresenter(sketch, dataset)
 main_presenter.draw()
+
+sketch.save_image('assignment_9.png')
