@@ -814,7 +814,7 @@ class GenderIncomePresenter:
 if IS_ONLINE:
     sketch = sketchingpy.Sketch2D(WIDTH, HEIGHT)
 else:
-    sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)m
+    sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)
 
 dataset = data_model.load_from_file(DATA_LOC, sketch=sketch)
 
