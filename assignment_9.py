@@ -309,7 +309,7 @@ class ParticipationRateByGenderPresenter:
         self._sketch.draw_rect(0, 0, width_female, 12)
 
         self._sketch.set_fill(MALE_COLOR)
-        self._sketch.draw_rect(self._width, 0, -1 * width_male, 12)
+        self._sketch.draw_rect(self._width - width_male, 0, width_male, 12)
 
         self._sketch.set_text_font(FONT, 10)
         self._sketch.set_fill(OVERLAY_COLOR)
