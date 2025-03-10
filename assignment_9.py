@@ -446,6 +446,7 @@ if IS_ONLINE:
 else:
     sketch = sketchingpy.Sketch2DStatic(WIDTH, HEIGHT)
 
+sketch.clear('#FFFFFF')
 dataset = data_model.load_from_file(DATA_LOC, sketch=sketch)
 
 main_presenter = MainPresenter(sketch, dataset)
