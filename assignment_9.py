@@ -21,7 +21,7 @@ TOP_PAD = 40
 BOTTOM_PAD = 10
 GUTTER_PAD = 10
 
-TOP_AXIS_HEIGHT = 20
+TOP_AXIS_HEIGHT = 14
 BOTTOM_AXIS_HEIGHT = 40
 
 START_X_GENDER_PARTICIPATION = LEFT_PAD
@@ -130,7 +130,7 @@ class MainPresenter:
 
     def __init__(self, sketch, dataset):
         """Create a new main presenter, creating subpresenter in the process.
-        
+
         Args:
             sketch: The sketchingpy.Sketch2D to use in drawing this
                 graphic and its sub-graphics.
@@ -194,7 +194,7 @@ class ParticipationRateByGenderPresenter:
 
     def __init__(self, sketch, dataset, vert_scale):
         """Create a new participation rate visualization.
-        
+
         Args:
             sketch: The sketch to use to draw this subgraphic.
             dataset: The data_model.Dataset to draw in this subgraphic.
@@ -235,15 +235,15 @@ class ParticipationRateByGenderPresenter:
 
         self._sketch.set_text_align('left', 'bottom')
         self._sketch.set_fill(FEMALE_COLOR)
-        self._sketch.draw_text(0, -20, 'Female')
+        self._sketch.draw_text(0, 0, 'Female')
 
         self._sketch.set_text_align('center', 'bottom')
         self._sketch.set_fill(DARK_TEXT_COLOR)
-        self._sketch.draw_text(self._width / 2, -20, PARTICIPATION_TITLE)
+        self._sketch.draw_text(self._width / 2, 0, PARTICIPATION_TITLE)
 
         self._sketch.set_text_align('right', 'bottom')
         self._sketch.set_fill(MALE_COLOR)
-        self._sketch.draw_text(self._width, -20, 'Male')
+        self._sketch.draw_text(self._width, 0, 'Male')
 
         self._sketch.pop_style()
         self._sketch.pop_transform()
