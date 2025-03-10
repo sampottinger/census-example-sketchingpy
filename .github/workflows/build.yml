@@ -24,3 +24,25 @@ jobs:
         run: pyflakes *.py
       - name: Run pycodestyle
         run: pycodestyle *.py
+  buildGraphic:
+    environment: build
+    runs-on: ubuntu-latest
+    name: Build graphic
+    needs: [checks]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install other dependencies
+        run: pip install -r requirements.txt
+      - name: Execute assignment 9
+        run: python3 assignment_9.py
+      - name: Upload assignment 9
+        uses: actions/upload-artifact@v4
+        with:
+          name: assignment_9
+          path: assignment_9.png
+          if-no-files-found: error
